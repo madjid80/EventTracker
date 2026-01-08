@@ -1,0 +1,6 @@
+node_modules
+dist
+configs/.env.develop
+configs/.env.local
+configs/.env.production
+configs/.env.test
