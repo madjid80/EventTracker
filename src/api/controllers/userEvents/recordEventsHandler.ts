@@ -9,9 +9,7 @@ export const recordEventsHandler = async (
 ) => {
   try {
     logger.info("Recording user events");
-    const { _id: id } = await UserEventModel.create({
-      ...(request.body as object),
-    });
+    const { _id: id } = await UserEventModel.insertOne(request.body as Object);
     logger.info(JSON.stringify(environmentConfig.EVENTS_POINTS));
     response.send({ message: "User events recorded Successfully", id });
   } catch (error) {
