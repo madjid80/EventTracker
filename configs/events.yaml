@@ -1,0 +1,10 @@
+events:
+  - name: LOGIN
+    description: User logged in
+    point: 1
+  - name: PURCHASE
+    description: User made a purchase
+    point: 10
+  - name: REFERRAL
+    description: User referred another user
+    point: 20
