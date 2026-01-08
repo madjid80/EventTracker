@@ -50,7 +50,7 @@ export const errorHandler = async (
       message: (error as any).validation
         .map(
           (ve: { message: string; instancePath: string }) =>
-            ve.instancePath + ": " + ve.message.split("Invalid input: ")[1]
+            "("+ve.instancePath + "): " + ve.message
         )
         .join(", "),
     };

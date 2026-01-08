@@ -1,5 +1,5 @@
 import Fastify, { type FastifyInstance } from "fastify";
-import { registerRoutes } from "@routes/index.js";
+import { registerRoutes } from "@api/routes/index.js";
 import { logger } from "@utilities/index.js";
 import { environmentConfig } from "@config/index.js";
 import { errorHandler } from "./errorHandler.js";

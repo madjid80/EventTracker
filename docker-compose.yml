@@ -45,6 +45,7 @@ services:
       NODE_ENV: develop
       PORT: 3000
       HOST: 0.0.0.0
+      MONGO_URL: mongodb://admin:secret@mongo:27017/eventTrackerDB?authSource=admin
 
 volumes:
   mongo_data:

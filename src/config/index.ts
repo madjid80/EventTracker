@@ -29,4 +29,5 @@ export const environmentConfig: Config = {
   API_SERVER_PORT: parsedEnv.API_SERVER_PORT as number,
   API_SERVER_HOST: parsedEnv.API_SERVER_HOST as string,
   LOG_LEVEL: parsedEnv.LOG_LEVEL as "error" | "warn" | "info" | "debug",
+  MONGO_URL: parsedEnv.MONGO_URL as string,
 };

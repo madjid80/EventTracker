@@ -12,8 +12,8 @@
       "@config/*": ["config/*"],
       "@utilities": ["utilities"],
       "@utilities/*": ["utilities/*"],
-      "@routes": ["routes"],
-      "@routes/*": ["routes/*"]
+      "@api": ["api"],
+      "@api/*": ["api/*"]
     },
 
     // Environment Settings
@@ -50,6 +50,8 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   }
 }
