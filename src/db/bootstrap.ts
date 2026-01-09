@@ -8,12 +8,6 @@ export let dataSource: mongoose.Mongoose;
 
 const connectionOptions = {
   connectTimeoutMS: 7 * 1000,
-  maxPoolSize: 20,
-  maxConnecting: 20,
-  maxIdleTimeMS: 2 * 60 * 60 * 1000,
-  readPreference: "nearest",
-  retryWrites: true,
-  autoIndex: true,
 } satisfies mongoose.ConnectOptions;
 
 export const connect = async (
@@ -23,6 +17,7 @@ export const connect = async (
     throw new Error("MONGO_URL is not defined in environment variables.");
   }
   dataSource = await mongoose.connect(mongoUrl, connectionOptions);
+  
   if(isConnected()) {
     logger.info(`Connected to MongoDB.`);
   }
