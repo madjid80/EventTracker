@@ -5,18 +5,11 @@ import type { PipelineStage } from "mongoose";
 
 const createMatchStage = (
   userId?: string,
-  timestampRange?: { start: number; end: number },
-  eventType?: EventTypes
+  eventType?: string
 ): PipelineStage.Match => {
   const match: PipelineStage.Match = { $match: {} };
   if (userId) {
     match["$match"]["userId"] = userId;
-  }
-  if (timestampRange) {
-    match["$match"]["timestamp"] = {
-      $gt: timestampRange.start,
-      $lt: timestampRange.end,
-    };
   }
   if (eventType) {
     match["$match"]["eventType"] = eventType;
@@ -44,17 +37,15 @@ const createProjectStage = (): PipelineStage.Project => {
   };
 };
 
-export const queryUserEvent = async (
-  userId?: string,
-  timestampRange?: { start: number; end: number },
-  eventType?: EventTypes
-): Promise<{ count: number; userId: string; eventType: EventTypes }[]> => {
+export const queryUserEvent = async ({
+  userId,
+  eventType,
+}: {
+  userId?: string;
+  eventType?: string;
+}): Promise<{ count: number; userId: string; eventType: EventTypes }[]> => {
   try {
-    const match: PipelineStage.Match = createMatchStage(
-      userId,
-      timestampRange,
-      eventType
-    );
+    const match: PipelineStage.Match = createMatchStage(userId, eventType);
     const group: PipelineStage.Group = createGroupStage();
     const project: PipelineStage.Project = createProjectStage();
     const pipeline: PipelineStage[] = [match, group, project];
