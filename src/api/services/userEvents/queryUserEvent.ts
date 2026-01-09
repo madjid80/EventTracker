@@ -1,6 +1,6 @@
 import type { EventTypes } from "@api/models/events/eventTypes.schema.js";
 import { logger } from "@utilities/index.js";
-import { UserEventModel } from "db/models/event.model.js";
+import { UserEventModel } from "@db/models/event.model.js";
 import type { PipelineStage } from "mongoose";
 
 const createMatchStage = (

@@ -13,9 +13,13 @@
       "@utilities": ["utilities"],
       "@utilities/*": ["utilities/*"],
       "@api": ["api"],
-      "@api/*": ["api/*"]
+      "@api/*": ["api/*"],
+      "@db": ["db"],
+      "@db/*": ["db/*"],
+      "@server": ["server"],
+      "@server/*": ["server/*"]
     },
-
+    
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "nodenext",
@@ -53,5 +57,7 @@
     "skipLibCheck": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
-  }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["tests", "**/*.spec.ts", "**/*.test.ts"]
 }

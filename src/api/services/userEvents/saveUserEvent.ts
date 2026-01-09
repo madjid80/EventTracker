@@ -1,7 +1,6 @@
 import type { UserEventRequest } from "@api/models/index.js";
 import { logger } from "@utilities/index.js";
-import { UserEventModel } from "db/models/event.model.js";
-import { ca } from "zod/locales";
+import { UserEventModel } from "@db/models/event.model.js";
 
 export const saveUserEvent = async (
   payload: UserEventRequest
