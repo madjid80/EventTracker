@@ -1,3 +1,4 @@
+import { queryEventsHandler } from "@api/controllers/index.js";
 import type { FastifyInstance, FastifyPluginOptions } from "fastify";
 
 const UsersEventsQueryEventsRoute = (
@@ -5,7 +6,7 @@ const UsersEventsQueryEventsRoute = (
   _: FastifyPluginOptions,
   next: (err?: Error | undefined) => void
 ) => {
-  instance.get("/events", (_req, res) => res.send("User events queried"));
+  instance.get("/events", queryEventsHandler);
   next();
 };
 

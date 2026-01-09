@@ -49,6 +49,7 @@ export const environmentConfig: Config = {
   API_SERVER_PORT: parsedEnv.API_SERVER_PORT as number,
   API_SERVER_HOST: parsedEnv.API_SERVER_HOST as string,
   MONGO_URL: parsedEnv.MONGO_URL as string,
+  EVENTS_POINTS: {} as EventPoint,
 };
 export const loadEventPoints = async (): Promise<void> => {
   environmentConfig.EVENTS_POINTS = await readEventPoints(

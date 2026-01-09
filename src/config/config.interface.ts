@@ -5,5 +5,5 @@ export interface Config {
   API_SERVER_HOST?: string;
   NODE_ENV?: "development" | "production" | "test" | "local";
   MONGO_URL?: string;
-  EVENTS_POINTS?: EventPoint;
+  EVENTS_POINTS: EventPoint;
 }
