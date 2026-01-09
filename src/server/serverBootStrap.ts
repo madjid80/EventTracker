@@ -9,10 +9,7 @@ import {
   validatorCompiler,
 } from "fastify-type-provider-zod";
 
-export const startServer = async (): Promise<FastifyInstance> => {
-  const HOST = environmentConfig.API_SERVER_HOST ?? "0.0.0.0";
-  const PORT: number = environmentConfig.API_SERVER_PORT ?? 8000;
-
+export const buildFastifyApp = async (): Promise<FastifyInstance> => {
   const app: FastifyInstance = Fastify({});
 
   app.setValidatorCompiler(validatorCompiler);
@@ -21,7 +18,15 @@ export const startServer = async (): Promise<FastifyInstance> => {
   await Promise.all([app.register(registerRoutes)]);
 
   app.setNotFoundHandler(notFoundHandler);
+  return app;
+};
+
+export const startServer = async (): Promise<void> => {
+  const HOST = environmentConfig.API_SERVER_HOST ?? "0.0.0.0";
+  const PORT: number = environmentConfig.API_SERVER_PORT ?? 8000;
+
   try {
+    const app = await buildFastifyApp();
     await app.listen({ port: PORT, host: HOST });
     logger.info(`⚡️ Server is running at http://${HOST}:${PORT}`);
   } catch (error) {
@@ -29,5 +34,4 @@ export const startServer = async (): Promise<FastifyInstance> => {
 
     (globalThis as any).process?.exit?.(1);
   }
-  return app;
 };

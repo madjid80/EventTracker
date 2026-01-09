@@ -2,7 +2,7 @@ import type { EventTypes } from "@api/models/events/eventTypes.schema.js";
 import { environmentConfig } from "@config/index.js";
 
 const calculatePoints = (
-  events: { count: number; userId: string; eventType: EventTypes }[]
+  events: { count: number; userId: string; eventType: EventTypes }[] //FIXME: define type
 ) => {
   const userPoints: Record<string, number> = events.reduce(
     (
@@ -12,7 +12,7 @@ const calculatePoints = (
       if (!points[event.userId]) {
         points[event.userId] = 0;
       }
-      //FIXME: the structure should be an object then we can have it with O(1) lookup
+      //FIXME: the config structure should be an object then we can have it with O(1) lookup
       const point =
         environmentConfig.EVENTS_POINTS.events.find(
           (e) => e.name === event.eventType
